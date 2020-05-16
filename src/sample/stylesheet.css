@@ -1,0 +1,106 @@
+.parent{
+
+	-fx-background-color: transparent;
+}
+.ultradark-greem-panel{
+	-fx-background-color: #0A2014;
+}
+.dark-green-panel{
+    -fx-background-color: #185C37;
+}
+.moderate-green-panel{
+    -fx-background-color: #107C41;
+}
+.light-green-panel{
+    -fx-background-color: #21A366;
+}
+.highlight-green-panel{
+    -fx-background-color: #33C481;
+}
+.main-btns{
+	-fx-background-color: transparent;
+	-fx-background-radius: 0px;
+}
+.main-icons{
+	-fx-fill: #0A2014;
+}
+.main-btns:hover{
+	-fx-background-color: transparent;
+	-fx-background-radius: 0px;
+	-fx-border-color: #21A366;
+	-fx-border-width: 0px 0px 3px 0px;
+	-fx-border-radius: 0px;
+	-fx-text-fill: #21A366;
+}
+.main-btns:hover .main-icons{
+	-fx-fill: #21A366;
+}
+.pane-icons{
+	-fx-fill: #ccc7c7;
+
+}
+.pane-btns{
+	-fx-background-color: transparent;
+	-fx-background-radius: 0px;
+	-fx-text-fill: #ccc7c7;
+
+
+}
+.label-fancylbl{
+	-fx-background-color: #0A2014;
+}
+.label-fancylbl-icons{
+	-fx-fill: #66B28D;
+}
+.pane-btns:hover{
+
+	-fx-text-fill: #0A2014;
+}
+.pane-btns:hover .pane-icons{
+	-fx-fill: #0A2014;
+}
+.pane-lbl{
+	-fx-text-fill: #ccc7c7;
+}
+.pane-textfield{
+
+	-fx-background-color: #ccc7c7;
+	-fx-background-radius: 0px;
+	-fx-border-color: #303030;
+	-fx-border-width: 3px 3px 3px 3px;
+	-fx-border-radius: 0px;
+	-fx-text-fill: #303030;
+	-fx-accent: #21A366;
+
+}
+.pane-list-view-standard{
+
+	-fx-background-color: #ccc7c7;
+	-fx-background-insets: 1px 1px 1px 1px;
+	-fx-background-radius: 0px;
+	-fx-border-color: #303030;
+	-fx-border-width: 3px 3px 3px 3px;
+	-fx-border-radius: 0px;
+	-fx-text-fill: #303030;
+	-fx-accent: #21A366;
+}
+.progress-bar-standard{
+
+	-fx-background-color: #ccc7c7;
+	-fx-background-insets: 1px 1px 1px 1px;
+	-fx-background-radius: 0px;
+	-fx-border-color: #303030;
+	-fx-border-width: 3px 3px 3px 3px;
+	-fx-border-radius: 0px;
+	-fx-accent: #0A2014;
+}
+.progress-bar-standard > .bar {
+    -fx-background-color: linear-gradient(
+        from 0px .75em to .75em 0px,
+        repeat,
+        -fx-accent 0%,
+        -fx-accent 49%,
+        derive(-fx-accent, 30%) 50%,
+        derive(-fx-accent, 30%) 99%
+    );
+}

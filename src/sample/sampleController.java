@@ -5,8 +5,19 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import util.Algorithm;
+import util.ExcelReader;
+import util.PathReader;
 
+
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,22 +48,50 @@ public class sampleController implements Initializable {
     @FXML private Button cmd_settings_output_path, cmd_settings_settings_path, cmd_settings_bill_type,
             cmd_settings_log_path, cmd_settings_confirm;
     @FXML private TextField txt_settings_output_path, txt_settings_log_path, txt_settings_settings_path;
-    @FXML private ChoiceBox com_settings_bill_type;
+    @FXML private ChoiceBox<String> com_settings_bill_type;
 
 
     private PaneManager pm;
+    private AlgorithmManager am;
+    private Stage s;
+    private String scan_path, sheet_path, output_path, settings_path;
+    private Algorithm algorithm;
+    private ExcelReader er;
+    private PathReader pr;
+    private FileChooser fc;
+    private DirectoryChooser dc;
+
+    public void setStage(Stage s){
+        this.s = s;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        //Init Controller Tools
+        fc = new FileChooser();
+        dc = new DirectoryChooser();
+        am = new AlgorithmManager(cmd_run_algorithm, icon_scan, icon_sheet, icon_output);
+
+        //Init PaneManager
         pm = new PaneManager();
         pm.addPaneToManager(pan_scan);
         pm.addPaneToManager(pan_sheet);
         pm.addPaneToManager(pan_algorithm);
         pm.addPaneToManager(pan_settings);
         pm.setActivePane(pan_scan);
+
+        //Init Combo Box
+        com_settings_bill_type.getItems().add("ER");
+        com_settings_bill_type.getItems().add("KK");
+        com_settings_bill_type.setValue(com_settings_bill_type.getItems().get(0));
+
+        //Init Settings
+        txt_settings_settings_path.setPromptText("-optional-");
+
     }
 
+    //HBox Top Nav
     public void clickedCmdScan(){
 
         pm.setActivePane(pan_scan);
@@ -68,5 +107,37 @@ public class sampleController implements Initializable {
     public void clickedCmdSettings(){
 
         pm.setActivePane(pan_settings);
+    }
+
+    //Scan Pane
+    public void clickedCmdScanPath(){
+
+        File f = dc.showDialog(s);
+        if(f != null){
+
+            scan_path = f.getPath();
+            txt_scan_path.setText(scan_path);
+            pr = new PathReader(f,"PDF", com_settings_bill_type.getValue(), "SCAN");
+            if(pr.getProcces() != null && pr.getProcces().length > 0){
+
+                for(File pdf : pr.getProcces()){
+                    lst_scan.getItems().add(pdf.getName());
+                }
+                am.setScan_condition(true);
+            } else {
+
+                scan_path = "";
+                txt_scan_path.setText("Pfad enthält nur ungültige Dokumente");
+                lst_scan.getItems().clear();
+                pr = null;
+                am.setScan_condition(false);
+            }
+        }
+    }
+
+    //Sheet Pane
+    public void clickedCmdSheetPath(){
+
+
     }
 }

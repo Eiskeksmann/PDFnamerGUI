@@ -10,11 +10,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent root = loader.load();
         root.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
         primaryStage.setTitle("PDFnamer");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        sampleController sctrl = (sampleController) loader.getController();
+        sctrl.setStage(primaryStage);
     }
 
 

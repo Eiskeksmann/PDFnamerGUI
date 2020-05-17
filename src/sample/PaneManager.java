@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.scene.layout.Pane;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 
@@ -20,10 +19,10 @@ public class PaneManager {
     }
     public void setActivePane(Pane p){
 
-        for(Pane pp : pList){
+        for(Pane pa : pList){
 
-            if(pp.equals(p)) p.setVisible(true);
-            else pp.setVisible(false);
+            if(pa.equals(p)) p.setVisible(true);
+            else pa.setVisible(false);
         }
     }
 }

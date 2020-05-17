@@ -60,7 +60,7 @@
             </Button>
          </children>
       </HBox>
-      <Pane id="pan_scan" fx:id="pan_scan" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
+      <Pane fx:id="pan_scan" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
          <children>
             <Pane id="pan_bar_scan" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
             <ListView id="lst_scan" fx:id="lst_scan" layoutX="14.0" layoutY="144.0" prefHeight="342.0" prefWidth="362.0" styleClass="pane-list-view-standard" />
@@ -73,7 +73,7 @@
                   <FontAwesomeIconView id="icon_lbl_scan" fill="#0a2014" glyphName="LIST" size="24" styleClass="pane-icons" />
                </graphic>
             </Label>
-            <Button id="cmd_scan" fx:id="cmd_scan_path" alignment="CENTER" layoutX="270.0" layoutY="34.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="118.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="Ordner" textAlignment="CENTER" textFill="#0a2014">
+            <Button fx:id="cmd_scan_path" alignment="CENTER" layoutX="270.0" layoutY="34.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickedCmdScanPath" prefHeight="50.0" prefWidth="118.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="Ordner" textAlignment="CENTER" textFill="#0a2014">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -85,7 +85,7 @@
                </font>
             </Button>
          </children></Pane>
-      <Pane id="pan_algorithm" fx:id="pan_algorithm" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
+      <Pane fx:id="pan_algorithm" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
          <children>
             <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
             <VBox layoutX="-4.0" layoutY="14.0" prefHeight="285.0" prefWidth="408.0">
@@ -151,7 +151,7 @@
                </opaqueInsets></ProgressBar>
          </children>
       </Pane>
-      <Pane id="pan_settings" fx:id="pan_settings" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
+      <Pane fx:id="pan_settings" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
          <children>
             <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
             <Button fx:id="cmd_settings_confirm" alignment="CENTER" contentDisplay="TOP" layoutX="75.0" layoutY="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="130.0" prefWidth="250.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="EINSTELLUNG BESTÄTIGEN" textAlignment="RIGHT" textFill="#0a2014">
@@ -231,10 +231,10 @@
             </HBox>
          </children>
       </Pane>
-      <Pane id="pan_sheet" fx:id="pan_sheet" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
+      <Pane fx:id="pan_sheet" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
          <children>
             <Pane id="pan_bar_sheet" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
-            <ListView id="lst_sheet" fx:id="lst_sheet" layoutX="14.0" layoutY="144.0" prefHeight="342.0" prefWidth="362.0" styleClass="pane-list-view-standard" />
+            <ListView fx:id="lst_sheet" layoutX="14.0" layoutY="144.0" prefHeight="342.0" prefWidth="362.0" styleClass="pane-list-view-standard" />
             <TextField id="txt_sheet" fx:id="txt_sheet_path" editable="false" layoutX="14.0" layoutY="46.0" prefHeight="25.0" prefWidth="256.0" promptText="Path ..." styleClass="pane-textfield" />
             <Label id="lbl_sheet" fx:id="lbl_lst_sheet" graphicTextGap="10.0" layoutX="14.0" layoutY="101.0" prefHeight="36.0" prefWidth="296.0" styleClass="pane-lbl" text="Vorgefertigte Namen ...">
                <font>
@@ -244,7 +244,7 @@
                   <FontAwesomeIconView id="icon_lbl_sheet" glyphName="FILE_EXCEL_ALT" size="24.0" styleClass="pane-icons" />
                </graphic>
             </Label>
-            <Button id="cmd_sheet" fx:id="cmd_sheet_path" alignment="CENTER" layoutX="270.0" layoutY="34.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="118.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="xlsx File" textAlignment="CENTER" textFill="#0a2014">
+            <Button fx:id="cmd_sheet_path" alignment="CENTER" layoutX="270.0" layoutY="34.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickedCmdSheetPath" prefHeight="50.0" prefWidth="118.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="xlsx File" textAlignment="CENTER" textFill="#0a2014">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

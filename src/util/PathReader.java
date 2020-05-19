@@ -15,26 +15,36 @@ public class PathReader {
     private File fpivot;
     private ArrayList<Pair<Integer ,File>> chain;
     private NameSheme nspivot;
+    private boolean preProcessedExist;
+    private boolean algorithmReady;
 
     public PathReader(File path, String extension, String starts_done, String starts_process){
 
+        algorithmReady = false;
         done = path.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
                 return name.startsWith(starts_done) && name.endsWith(extension);
             }
         });
+        if(done != null && done.length > 0){
+
+            this.fpivot = done[done.length - 1];
+            preProcessedExist = true;
+        }
+        else preProcessedExist = false;
+
         process = path.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
                 return name.startsWith(starts_process) && name.endsWith(extension);
             }
         });
-        if(done != null && done.length > 0) this.fpivot = done[done.length - 1];
-        else return;
+
         this.nspivot = new NameSheme(fpivot.getName());
         this.chain = new ArrayList<>();
-        initChain();
+        if(preProcessedExist) initChain();
+
     }
     public File getPivot(){
 
@@ -43,6 +53,10 @@ public class PathReader {
     public File[] getProcces(){ return process; }
     public int getPivotIdAsInt(){
         return nspivot.getIdAsInt();
+    }
+    public void initChain(NameSheme ns){
+
+        fpivot = new File(ns.getName());
     }
     private void initChain(){
 
@@ -53,6 +67,7 @@ public class PathReader {
             StringTokenizer tok2 = new StringTokenizer(tok.nextToken(), ".");
             chain.add(new Pair<Integer, File>(Integer.parseInt(tok2.nextToken()), process[i]));
         }
+        algorithmReady = true;
     }
     public File getProcessFileById(int id){
 

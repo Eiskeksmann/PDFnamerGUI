@@ -4,13 +4,13 @@ import java.util.StringTokenizer;
 
 public class NameSheme {
 
-    int length;
-    String name;
-    String type;
-    String month;
-    String id;
-    String number;
-    String fileextension;
+    private int length;
+    private String name;
+    private String type;
+    private String month;
+    private String id;
+    private String number;
+    private String fileextension;
 
     public NameSheme(String name){
 

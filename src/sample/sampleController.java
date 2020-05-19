@@ -1,6 +1,7 @@
 package sample;
 
 
+import com.sun.glass.ui.CommonDialogs;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,10 +15,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import util.Algorithm;
 import util.ExcelReader;
+import util.NameSheme;
 import util.PathReader;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -136,8 +139,20 @@ public class sampleController implements Initializable {
     }
 
     //Sheet Pane
-    public void clickedCmdSheetPath(){
+    public void clickedCmdSheetPath() throws IOException {
 
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files","*.xlsx"));
+        File f = fc.showOpenDialog(s);
+        if(f != null){
+
+            sheet_path = f.getPath();
+            txt_sheet_path.setText(sheet_path);
+            er = new ExcelReader(f,com_settings_bill_type.getValue(),"File");
+            er.CreateNameShemeList();
+            for(NameSheme ns : er.getShemes()){
+                lst_sheet.getItems().add(ns.getName());
+            }
+        }
 
     }
 }

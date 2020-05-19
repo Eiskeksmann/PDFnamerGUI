@@ -15,13 +15,23 @@ public class Algorithm {
 
     public Algorithm(File excel, File dir) throws IOException {
 
-        this.er = new ExcelReader(excel, 1);
-        this.pr = new PathReader(dir, "PDF", "ER", "SCAN");
+        //this.er = new ExcelReader(excel, 1);
+        //this.pr = new PathReader(dir, "PDF", "ER", "SCAN");
         this.path = dir.toPath();
 
         er.CreateNameShemeList();
         //createFileStructure(dir);
         //startProcess();
+    }
+    public Algorithm(ExcelReader er, PathReader pr, File dir) throws IOException{
+
+        this.er = er;
+        this.pr = pr;
+        this.path = dir.toPath();
+
+        er.CreateNameShemeList();
+        createFileStructure(dir);
+        startProcess();
     }
 
     public void createFileStructure(File dir){

@@ -4,6 +4,7 @@ import java.util.StringTokenizer;
 
 public class NameSheme {
 
+    int length;
     String name;
     String type;
     String month;
@@ -15,6 +16,7 @@ public class NameSheme {
 
         this.name = name;
         StringTokenizer tok = new StringTokenizer(this.name, "-");
+        this.length = tok.countTokens();
         this.type = tok.nextToken();
         this.month = tok.nextToken();
         this.id = tok.nextToken();
@@ -29,6 +31,7 @@ public class NameSheme {
     public String getId(){ return id; }
     public String getNumber() { return number;}
     public String getFileextension() { return fileextension; }
+    public int getLength() { return length; }
 
     public boolean equals(NameSheme ns){
 

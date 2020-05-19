@@ -63,7 +63,7 @@
       <Pane fx:id="pan_scan" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
          <children>
             <Pane id="pan_bar_scan" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
-            <ListView id="lst_scan" fx:id="lst_scan" layoutX="14.0" layoutY="144.0" prefHeight="342.0" prefWidth="362.0" styleClass="pane-list-view-standard" />
+            <ListView fx:id="lst_scan" layoutX="14.0" layoutY="144.0" prefHeight="342.0" prefWidth="362.0" styleClass="pane-list-view-standard" />
             <TextField id="txt_scan" fx:id="txt_scan_path" editable="false" layoutX="14.0" layoutY="46.0" prefHeight="25.0" prefWidth="256.0" promptText="Path ..." styleClass="pane-textfield" />
             <Label id="lbl_scan" fx:id="lbl_lst_scan" layoutX="14.0" layoutY="99.0" prefHeight="36.0" prefWidth="296.0" styleClass="pane-lbl" text="PDFs die umbennant werden ...">
                <font>

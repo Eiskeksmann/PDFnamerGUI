@@ -12,9 +12,9 @@ public class PathReader {
 
     private File[] done;
     private File[] process;
-    private File fpivot;
     private ArrayList<Pair<Integer ,File>> chain;
     private NameSheme nspivot;
+    private Integer ipivot;
     private boolean preProcessedExist;
     private boolean algorithmReady;
 
@@ -27,12 +27,6 @@ public class PathReader {
                 return name.startsWith(starts_done) && name.endsWith(extension);
             }
         });
-        if(done != null && done.length > 0){
-
-            this.fpivot = done[done.length - 1];
-            preProcessedExist = true;
-        }
-        else preProcessedExist = false;
 
         process = path.listFiles(new FilenameFilter() {
             @Override
@@ -41,22 +35,32 @@ public class PathReader {
             }
         });
 
-        this.nspivot = new NameSheme(fpivot.getName());
         this.chain = new ArrayList<>();
-        if(preProcessedExist) initChain();
+        initChain();
 
     }
-    public File getPivot(){
 
-        return fpivot;
-    }
+    public boolean isPreProcessedExist(){ return preProcessedExist; }
+    public boolean isAlgorithmReady(){ return algorithmReady; }
+    public void setAlgorithmReady(boolean b) { this.algorithmReady = b; }
+
     public File[] getProcces(){ return process; }
+    public File getProcessFileById(int id){
+
+        for(Pair<Integer, File> p : chain){
+            if(p.getKey() == id){
+                return p.getValue();
+            }
+        }
+        //NoSuchFileinProcessQueue
+        return null;
+    }
+
     public int getPivotIdAsInt(){
         return nspivot.getIdAsInt();
     }
-    public void initChain(NameSheme ns){
-
-        fpivot = new File(ns.getName());
+    public int getIntPivot(){
+        return ipivot;
     }
     private void initChain(){
 
@@ -67,16 +71,18 @@ public class PathReader {
             StringTokenizer tok2 = new StringTokenizer(tok.nextToken(), ".");
             chain.add(new Pair<Integer, File>(Integer.parseInt(tok2.nextToken()), process[i]));
         }
-        algorithmReady = true;
-    }
-    public File getProcessFileById(int id){
+        if(done != null && done.length > 0 && !preProcessedExist){
 
-        for(Pair<Integer, File> p : chain){
-            if(p.getKey() == id){
-                 return p.getValue();
-             }
+            this.nspivot = new NameSheme(done[done.length - 1].getName());
+            preProcessedExist = true;
+            algorithmReady = true;
         }
-        //NoSuchFileinProcessQueue
-        return null;
+        if (chain != null && chain.size() > 0 && !preProcessedExist) {
+
+            this.ipivot = chain.get(0).getKey() - 1;
+            preProcessedExist = false;
+            algorithmReady = true;
+        }
     }
+
 }

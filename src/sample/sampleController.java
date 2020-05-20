@@ -92,6 +92,9 @@ public class sampleController implements Initializable {
         //Init Settings
         txt_settings_settings_path.setPromptText("-optional-");
 
+        //Init Button Structure
+        cmd_sheet_path.setDisable(true);
+
     }
 
     //HBox Top Nav
@@ -127,6 +130,7 @@ public class sampleController implements Initializable {
                     lst_scan.getItems().add(pdf.getName());
                 }
                 am.setScan_condition(true);
+                cmd_sheet_path.setDisable(false);
             } else {
 
                 scan_path = "";
@@ -149,6 +153,15 @@ public class sampleController implements Initializable {
             txt_sheet_path.setText(sheet_path);
             er = new ExcelReader(f,com_settings_bill_type.getValue(),"File");
             er.CreateNameShemeList();
+
+            if(pr.isPreProcessedExist()){
+
+                er.trimShemes(pr.getPivotIdAsInt());
+            } else if (!pr.isPreProcessedExist()) {
+
+                er.trimShemes(pr.getIntPivot());
+            }
+            lst_sheet.getItems().clear();
             for(NameSheme ns : er.getShemes()){
                 lst_sheet.getItems().add(ns.getName());
             }

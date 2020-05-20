@@ -33,7 +33,6 @@ public class ExcelReader {
         this.wb = new XSSFWorkbook(new FileInputStream(this.path));
         this.sheet = wb.getSheet(tab);
         this.column = getRowIndexByName(col);
-        System.out.println("Working col: " + column);
         if(this.column == -1) return;
         this.shemes = new ArrayList<>();
     }
@@ -80,7 +79,10 @@ public class ExcelReader {
     }
     public ArrayList<NameSheme> trimShemes(int pivot){
 
+        int old = shemes.size();
         shemes.removeIf(ns -> ns.getIdAsInt() <= pivot);
+        int diff = old - shemes.size();
+        System.out.println("Removed " + diff + " Items from NameShemeList");
         return shemes;
     }
 

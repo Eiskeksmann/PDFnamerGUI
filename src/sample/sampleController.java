@@ -31,6 +31,7 @@ public class sampleController implements Initializable {
     @FXML private Pane pan_scan, pan_sheet, pan_algorithm, pan_settings;
 
     //Scan Pane
+    @FXML private CheckBox cb_scan_setouput;
     @FXML private Button cmd_scan_path;
     @FXML private TextField txt_scan_path;
     @FXML private Label lbl_lst_scan;
@@ -88,6 +89,9 @@ public class sampleController implements Initializable {
         com_settings_bill_type.getItems().add("ER");
         com_settings_bill_type.getItems().add("KK");
         com_settings_bill_type.setValue(com_settings_bill_type.getItems().get(0));
+
+        //Init Checkbox
+        cb_scan_setouput.setSelected(false);
 
         //Init Settings
         txt_settings_settings_path.setPromptText("-optional-");
@@ -152,20 +156,26 @@ public class sampleController implements Initializable {
             sheet_path = f.getPath();
             txt_sheet_path.setText(sheet_path);
             er = new ExcelReader(f,com_settings_bill_type.getValue(),"File");
-            er.CreateNameShemeList();
 
-            if(pr.isPreProcessedExist()){
+            if(er.getColumn() != -1) {
 
-                er.trimShemes(pr.getPivotIdAsInt());
-            } else if (!pr.isPreProcessedExist()) {
+                if(er.CreateNameShemeList()) {
+                    if (pr.isPreProcessedExist()) {
 
-                er.trimShemes(pr.getIntPivot());
-            }
-            lst_sheet.getItems().clear();
-            for(NameSheme ns : er.getShemes()){
-                lst_sheet.getItems().add(ns.getName());
-            }
-        }
+                        er.trimShemes(pr.getPivotIdAsInt());
+                    } else if (!pr.isPreProcessedExist()) {
+
+                        er.trimShemes(pr.getIntPivot());
+                    }
+                    lst_sheet.getItems().clear();
+                    for (NameSheme ns : er.getShemes()) {
+                        lst_sheet.getItems().add(ns.getName());
+                    }
+                    if(lst_sheet.getItems().size() > 0) am.setSheet_condition(true);
+                    else am.setSheet_condition(false); return;
+                } else am.setSheet_condition(false); return;
+            } else am.setSheet_condition(false); return;
+        } else am.setSheet_condition(false); return;
 
     }
 }

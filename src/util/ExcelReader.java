@@ -1,6 +1,5 @@
 package util;
 
-import com.sun.xml.internal.org.jvnet.fastinfoset.RestrictedAlphabet;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -37,6 +36,8 @@ public class ExcelReader {
         this.shemes = new ArrayList<>();
     }
 
+    public int getColumn(){ return column; }
+
     private int getRowIndexByName(String column){
 
         row = sheet.getRow(0);
@@ -55,20 +56,29 @@ public class ExcelReader {
         return -1;
     }
 
-    public void CreateNameShemeList(){
+    public boolean CreateNameShemeList(){
 
         //TODO: Iterating Through getRowIndexByName
         boolean condition = false;
 
-        for(int i = 2; !condition; i++){
+        if(sheet != null) {
+            for (int i = 2; !condition; i++) {
 
-            row = sheet.getRow(i);
-            cell = row.getCell(column);
-            cell.setCellType(CellType.STRING);
+                row = sheet.getRow(i);
+                if (row != null) {
+                    cell = row.getCell(column);
+                } else return false;
+                if (cell != null) {
+                    cell.setCellType(CellType.STRING);
+                } else return false;
 
-            if(cell.getStringCellValue().equals("")) condition = true;
-            else shemes.add(new NameSheme(cell.getStringCellValue()));
-        }
+                if (cell.getStringCellValue().equals("")) {
+                    condition = true;
+                    return true;
+                } else shemes.add(new NameSheme(cell.getStringCellValue()));
+            }
+        } else return false;
+        return false;
     }
     public NameSheme getPivot(){
         return shemes.get(0);

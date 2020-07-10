@@ -21,21 +21,11 @@ public class PathReader {
     public PathReader(File path, String extension, String starts_done, String starts_process){
 
         algorithmReady = false;
-        done = path.listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.startsWith(starts_done) && name.endsWith(extension);
-            }
-        });
+        done = path.listFiles(new BFilenameFilter(starts_done, extension));
 
-        process = path.listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.startsWith(starts_process) && name.endsWith(extension);
-            }
-        });
+        process = path.listFiles(new BFilenameFilter(starts_process, extension));
 
-        this.chain = new ArrayList<>();
+        this.chain = new ArrayList<Pair<Integer, File>>();
         initChain();
 
     }

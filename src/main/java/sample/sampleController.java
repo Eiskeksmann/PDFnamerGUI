@@ -18,7 +18,6 @@ import util.ExcelReader;
 import util.NameSheme;
 import util.PathReader;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -59,7 +58,7 @@ public class sampleController implements Initializable {
     private AlgorithmManager am;
     private Stage s;
     private String scan_path, sheet_path, output_path, settings_path;
-    private Algorithm algorithm;
+    private Algorithm alg;
     private ExcelReader er;
     private PathReader pr;
     private FileChooser fc;
@@ -99,6 +98,11 @@ public class sampleController implements Initializable {
         //Init Button Structure
         cmd_sheet_path.setDisable(true);
 
+        //Init CheckBox ScanPane
+        cb_scan_setouput.setSelected(true);
+
+        txt_settings_output_path.setText(System.getProperty("java.home"));
+
     }
 
     //HBox Top Nav
@@ -134,6 +138,11 @@ public class sampleController implements Initializable {
                     lst_scan.getItems().add(pdf.getName());
                 }
                 am.setScan_condition(true);
+                if(cb_scan_setouput.isSelected()) {
+                    am.setOutput_condition(true);
+                    output_path = scan_path;
+                }
+                else am.setOutput_condition(false);
                 cmd_sheet_path.setDisable(false);
             } else {
 
@@ -150,6 +159,7 @@ public class sampleController implements Initializable {
     public void clickedCmdSheetPath() throws IOException {
 
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files","*.xlsx"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files","*.xltx"));
         File f = fc.showOpenDialog(s);
         if(f != null){
 
@@ -177,5 +187,19 @@ public class sampleController implements Initializable {
             } else am.setSheet_condition(false); return;
         } else am.setSheet_condition(false); return;
 
+    }
+
+    //Algorithm Pane
+    public void clickedCmdRunAlgorithm() throws IOException {
+
+        cmd_run_algorithm.setDisable(true);
+        pbar_algorithm.setDisable(false);
+
+        alg = new Algorithm(er, pr, output_path);
+        alg.startProcess(pbar_algorithm);
+
+        am.setOutput_condition(false);
+        am.setSheet_condition(false);
+        am.setScan_condition(false);
     }
 }

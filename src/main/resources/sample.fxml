@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="600.0" maxWidth="400.0" minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.sampleController">
+   <children>
+      <HBox alignment="CENTER" layoutX="19.0" layoutY="25.0" prefHeight="104.0" prefWidth="400.0" styleClass="dark-green-panel" stylesheets="@stylesheet.css" AnchorPane.bottomAnchor="496.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <opaqueInsets>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </opaqueInsets>
+         <children>
+            <Button id="cmd_addSheet" fx:id="cmd_scan" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickedCmdScan" prefHeight="90.0" prefWidth="100.0" styleClass="main-btns" stylesheets="@stylesheet.css" text="ADD Scans" textAlignment="CENTER" textFill="#0a2014">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontAwesomeIconView fill="#062511" glyphName="FOLDER_OPEN_ALT" size="30.0" styleClass="main-icons">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+            </Button>
+            <Button id="cmd_addSheet" fx:id="cmd_sheet" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickedCmdSheet" prefHeight="90.0" prefWidth="100.0" styleClass="main-btns" stylesheets="@stylesheet.css" text="ADD Sheet" textAlignment="CENTER" textFill="#0a2014">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontAwesomeIconView fill="#062511" glyphName="FOLDER_OPEN" size="30.0" styleClass="main-icons" />
+               </graphic>
+            </Button>
+            <Button id="cmd_addSheet" fx:id="cmd_algorithm" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickedCmdAlgorithm" prefHeight="90.0" prefWidth="100.0" styleClass="main-btns" stylesheets="@stylesheet.css" text="RUN Algorithm" textAlignment="CENTER" textFill="#0a2014">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontAwesomeIconView fill="#062511" glyphName="SORT_AMOUNT_DESC" size="30.0" styleClass="main-icons" />
+               </graphic>
+            </Button>
+            <Button id="cmd_addSheet" fx:id="cmd_settings" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickedCmdSettings" prefHeight="90.0" prefWidth="100.0" styleClass="main-btns" stylesheets="@stylesheet.css" text="VIEW Settings" textAlignment="CENTER" textFill="#0a2014">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontAwesomeIconView fill="#062511" glyphName="GEAR" size="30.0" styleClass="main-icons" />
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <Pane fx:id="pan_scan" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
+         <children>
+            <Pane id="pan_bar_scan" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
+            <ListView fx:id="lst_scan" layoutX="14.0" layoutY="144.0" prefHeight="342.0" prefWidth="362.0" styleClass="pane-list-view-standard" />
+            <TextField id="txt_scan" fx:id="txt_scan_path" editable="false" layoutX="14.0" layoutY="69.0" prefHeight="25.0" prefWidth="256.0" promptText="Path ..." styleClass="pane-textfield" />
+            <Label id="lbl_scan" fx:id="lbl_lst_scan" layoutX="14.0" layoutY="99.0" prefHeight="36.0" prefWidth="296.0" styleClass="pane-lbl" text="PDFs die umbennant werden ...">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView id="icon_lbl_scan" fill="#0a2014" glyphName="LIST" size="24" styleClass="pane-icons" />
+               </graphic>
+            </Label>
+            <Button fx:id="cmd_scan_path" alignment="CENTER" layoutX="276.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickedCmdScanPath" prefHeight="50.0" prefWidth="118.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="Ordner" textAlignment="CENTER" textFill="#0a2014">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontAwesomeIconView id="icon_cmd_scan" fill="#062511" glyphName="FOLDER_OPEN_ALT" size="30.0" styleClass="pane-icons" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <CheckBox fx:id="cb_scan_setouput" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" selected="true" styleClass="check-box-standard" text="setze PDF Pfad als OUTPUT" />
+         </children></Pane>
+      <Pane fx:id="pan_algorithm" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
+         <children>
+            <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
+            <VBox layoutX="-4.0" layoutY="14.0" prefHeight="285.0" prefWidth="408.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="120.0" prefWidth="320.0" spacing="10.0">
+                     <children>
+                        <Label id="lbl_algorithm_scan" alignment="CENTER" prefHeight="80.0" prefWidth="100.0" styleClass="label-fancylbl">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="FOLDER_OPEN_ALT" size="60" styleClass="label-fancylbl-icons" />
+                           </graphic>
+                        </Label>
+                        <Label id="lbl_algorithm_scan_check" alignment="CENTER" prefHeight="80.0" prefWidth="100.0" styleClass="label-fancylbl">
+                           <graphic>
+                              <FontAwesomeIconView id="icon_algorithm_scan_times" fx:id="icon_scan" glyphName="TIMES" size="60" styleClass="label-fancylbl-icons" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="118.0" prefWidth="380.0" spacing="10.0">
+                     <children>
+                        <Label id="lbl_algorithm_sheet" alignment="CENTER" prefHeight="80.0" prefWidth="100.0" styleClass="label-fancylbl">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="FOLDER_OPEN" size="60" styleClass="label-fancylbl-icons" />
+                           </graphic>
+                        </Label>
+                        <Label id="lbl_algorithm_sheet_check" alignment="CENTER" prefHeight="80.0" prefWidth="100.0" styleClass="label-fancylbl">
+                           <graphic>
+                              <FontAwesomeIconView id="icon_algorithm_sheet_times" fx:id="icon_sheet" glyphName="TIMES" size="60" styleClass="label-fancylbl-icons" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="120.0" prefWidth="320.0" spacing="10.0">
+                     <children>
+                        <Label id="lbl_algorithm_output" alignment="CENTER" prefHeight="80.0" prefWidth="100.0" styleClass="label-fancylbl">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="COPY" size="60" styleClass="label-fancylbl-icons" />
+                           </graphic>
+                        </Label>
+                        <Label id="lbl_algorithm_output_check" alignment="CENTER" prefHeight="80.0" prefWidth="100.0" styleClass="label-fancylbl">
+                           <graphic>
+                              <FontAwesomeIconView id="icon_algorithm_output_times" fx:id="icon_output" glyphName="TIMES" size="60" styleClass="label-fancylbl-icons" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Button fx:id="cmd_run_algorithm" alignment="CENTER" contentDisplay="TOP" disable="true" layoutX="94.0" layoutY="308.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickedCmdRunAlgorithm" prefHeight="104.0" prefWidth="212.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="RUN Algorithm" textAlignment="CENTER" textFill="#0a2014">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontAwesomeIconView id="icon_cmd_algorithm_run" fill="#062511" glyphName="SORT_AMOUNT_ASC" size="30.0" styleClass="pane-icons" />
+               </graphic>
+            </Button>
+            <ProgressBar id="pbar_algorithm" fx:id="pbar_algorithm" disable="true" layoutX="15.0" layoutY="430.0" mouseTransparent="true" prefHeight="40.0" prefWidth="370.0" progress="0.0" styleClass="progress-bar-standard">
+               <effect>
+                  <Glow />
+               </effect>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets></ProgressBar>
+         </children>
+      </Pane>
+      <Pane fx:id="pan_settings" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
+         <children>
+            <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
+            <Button fx:id="cmd_settings_confirm" alignment="CENTER" contentDisplay="TOP" layoutX="75.0" layoutY="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="130.0" prefWidth="250.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="EINSTELLUNG BESTÄTIGEN" textAlignment="RIGHT" textFill="#0a2014">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontAwesomeIconView fill="#062511" glyphName="CHECK" size="70" styleClass="pane-icons" />
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <HBox alignment="CENTER_LEFT" layoutX="-7.0" layoutY="21.0" prefHeight="80.0" prefWidth="415.0">
+               <children>
+                  <Button fx:id="cmd_settings_output_path" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="OUTPUT Pfad" textAlignment="RIGHT" textFill="#0a2014">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <graphic>
+                        <FontAwesomeIconView fill="#062511" glyphName="COPY" size="30.0" styleClass="pane-icons" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="txt_settings_output_path" alignment="CENTER" editable="false" prefHeight="30.0" prefWidth="260.0" styleClass="pane-textfield" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="-7.0" layoutY="101.0" prefHeight="80.0" prefWidth="415.0">
+               <children>
+                  <Button fx:id="cmd_settings_log_path" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="LOG Pfad" textAlignment="RIGHT" textFill="#0a2014">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <graphic>
+                        <FontAwesomeIconView fill="#062511" glyphName="FILE_TEXT_ALT" size="30.0" styleClass="pane-icons" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="txt_settings_log_path" alignment="CENTER" editable="false" prefHeight="30.0" prefWidth="260.0" styleClass="pane-textfield" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="-7.0" layoutY="181.0" prefHeight="80.0" prefWidth="415.0">
+               <children>
+                  <Button fx:id="cmd_settings_settings_path" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="SETTINGS Pfad" textAlignment="RIGHT" textFill="#0a2014">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <graphic>
+                        <FontAwesomeIconView fill="#062511" glyphName="GEAR" size="30.0" styleClass="pane-icons" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="txt_settings_settings_path" editable="false" prefHeight="30.0" prefWidth="260.0" styleClass="pane-textfield" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="-7.0" layoutY="261.0" prefHeight="80.0" prefWidth="415.0">
+               <children>
+                  <Button fx:id="cmd_settings_bill_type" alignment="CENTER" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="BILL TYP" textAlignment="RIGHT" textFill="#0a2014">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <graphic>
+                        <FontAwesomeIconView fill="#062511" glyphName="CREDIT_CARD" size="30.0" styleClass="pane-icons" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <ChoiceBox fx:id="com_settings_bill_type" prefHeight="30.0" prefWidth="260.0" styleClass="pane-list-view-standard" />
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="pan_sheet" layoutY="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="light-green-panel" stylesheets="@stylesheet.css" visible="false">
+         <children>
+            <Pane id="pan_bar_sheet" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="400.0" styleClass="ultradark-greem-panel" stylesheets="@stylesheet.css" />
+            <ListView fx:id="lst_sheet" layoutX="14.0" layoutY="144.0" prefHeight="342.0" prefWidth="362.0" styleClass="pane-list-view-standard" />
+            <TextField id="txt_sheet" fx:id="txt_sheet_path" editable="false" layoutX="14.0" layoutY="69.0" prefHeight="25.0" prefWidth="256.0" promptText="Path ..." styleClass="pane-textfield" />
+            <Label id="lbl_sheet" fx:id="lbl_lst_sheet" graphicTextGap="10.0" layoutX="14.0" layoutY="101.0" prefHeight="36.0" prefWidth="296.0" styleClass="pane-lbl" text="Vorgefertigte Namen ...">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView id="icon_lbl_sheet" glyphName="FILE_EXCEL_ALT" size="24.0" styleClass="pane-icons" />
+               </graphic>
+            </Label>
+            <Button fx:id="cmd_sheet_path" alignment="CENTER" layoutX="270.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickedCmdSheetPath" prefHeight="50.0" prefWidth="118.0" styleClass="pane-btns" stylesheets="@stylesheet.css" text="xlsx File" textAlignment="CENTER" textFill="#0a2014">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontAwesomeIconView id="icon_cmd_sheet" fill="#062511" glyphName="FOLDER_OPEN" size="30.0" styleClass="pane-icons" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

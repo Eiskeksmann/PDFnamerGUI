@@ -10,7 +10,7 @@ public class PaneManager {
 
     public PaneManager(){
 
-        pList = new ArrayList<>();
+        pList = new ArrayList<Pane>();
     }
 
     public void addPaneToManager(Pane p){

@@ -33,7 +33,7 @@ public class ExcelReader {
         this.sheet = wb.getSheet(tab);
         this.column = getRowIndexByName(col);
         if(this.column == -1) return;
-        this.shemes = new ArrayList<>();
+        this.shemes = new ArrayList<NameSheme>();
     }
 
     public int getColumn(){ return column; }
@@ -58,9 +58,7 @@ public class ExcelReader {
 
     public boolean CreateNameShemeList(){
 
-        //TODO: Iterating Through getRowIndexByName
         boolean condition = false;
-
         if(sheet != null) {
             for (int i = 2; !condition; i++) {
 
@@ -90,7 +88,10 @@ public class ExcelReader {
     public ArrayList<NameSheme> trimShemes(int pivot){
 
         int old = shemes.size();
-        shemes.removeIf(ns -> ns.getIdAsInt() <= pivot);
+        for(NameSheme ns : shemes)
+            if(ns.getIdAsInt() <= pivot)
+                shemes.remove(ns);
+
         int diff = old - shemes.size();
         System.out.println("Removed " + diff + " Items from NameShemeList");
         return shemes;
